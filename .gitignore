@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Cascading.API/.vs
+/Cascading.API/Cascading.API/bin
+/Cascading.API/Cascading.API/obj/Debug
+/Cascading.API/packages

@@ -1,14 +1,14 @@
 <div class="col-md-6">
   <div class="panel panel-info" style="margin-top:50px;">
-    <div class="panel-heading"> Casding Dropdown</div>
+    <div class="panel-heading"> {{panelHeading}}</div>
     <div class="panel-wrapper collapse in">
       <div class="panel-body">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label class="control-label">Country</label>
-              <select class="form-control" [(ngModel)]="selectedCountry.value" (change)="countryChange(selectedCountry.value)">
-                <option *ngFor="let country of countryList" value={{country.value}}>{{country.label}}</option>
+              <select class="form-control" [(ngModel)]="selectedCountry.Value" (change)="countryChange(selectedCountry.Value)">
+                <option *ngFor="let country of countryList" value={{country.Value}}>{{country.Label}}</option>
               </select>
             </div>
           </div>
@@ -18,7 +18,7 @@
             <div class="form-group">
               <label class="control-label">City</label>
               <select class="form-control">
-                <option *ngFor="let city of cityList" value={{city.value}}>{{city.label}}</option>
+                <option *ngFor="let city of cityList" value={{city.Value}}>{{city.Label}}</option>
               </select>
             </div>
           </div>

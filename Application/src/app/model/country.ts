@@ -1,3 +1,3 @@
 export class Country {
-    constructor(public label: string, public value: string) { }
+    constructor(public Label: string, public Value: number) { }
 }

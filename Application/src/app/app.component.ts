@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { City } from './model/city';
 import { Country } from './model/country';
 import { MasterService } from './service/master.service';
@@ -9,21 +9,32 @@ import { MasterService } from './service/master.service';
   styleUrls: ['./app.component.css'],
   providers: [MasterService]
 })
-export class AppComponent {
-  title = 'app';
-  selectedCountry: Country = new Country('India', '1');
-  countryList: Array<Country>;
-  selectedCity: City = new City('Namakkal', '1');
-  cityList: Array<City>;
+export class AppComponent implements OnInit {
+  private title = 'app';
+  private selectedCountry: Country = new Country('India', 1);
+  private countryList: Array<Country>;
+  private selectedCity: City = new City('Namakkal', 1);
+  private cityList: Array<City>;
+  private panelHeading: string;
 
   constructor(private masterService: MasterService) {
-    this.countryList = this.masterService.getCountryList();
-    this.cityList = this.masterService.getCityList();
   }
 
-  countryChange(countryId) {
+  ngOnInit() {
+    this.panelHeading = ' Casding Dropdown';
+    this.masterService.getCountryList().subscribe(response => {
+      this.countryList = response as Country[];
+    }, error => console.log(error));
+    this.masterService.getCityList().subscribe(response => {
+      this.cityList = response as City[];
+    }, error => console.log(error));
+  }
+
+  private countryChange(countryId: any) {
     this.cityList = [];
-    this.cityList = this.masterService.getCityList().filter(f => f.id === countryId);
-    console.log(this.cityList);
+    this.masterService.getCityList().subscribe(response => {
+      const data = response as City[];
+      this.cityList = data.filter(f => f.Id.toString() === countryId);
+    });
   }
 }
