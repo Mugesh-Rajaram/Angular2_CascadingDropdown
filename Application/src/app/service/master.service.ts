@@ -9,7 +9,6 @@ export class MasterService {
     hostURL: string;
 
     constructor(private http: HttpClient) {
-        this.hostURL = 'http://localhost:49295/';
     }
 
     public getCountryList() {
@@ -19,11 +18,11 @@ export class MasterService {
         //     new Country('Australia', 3),
         //     new Country('Brazil', 4)
         // ];
-        return this.http.get(`${this.hostURL}api/master/colt`).pipe(map(response => response));
+        return this.http.get(`api/master/colt`).pipe(map(response => response));
     }
 
     public getCityList() {
-        return this.http.get(`${this.hostURL}api/master/cilt`).pipe(map(response => response));
+        return this.http.get(`api/master/cilt`).pipe(map(response => response));
         // return [
         //     new City('Namakkal', 1, 1),
         //     new City('Chennai', 2, 1),

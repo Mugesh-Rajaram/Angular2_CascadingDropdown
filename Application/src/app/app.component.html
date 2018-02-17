@@ -1,6 +1,6 @@
 <div class="col-md-6">
   <div class="panel panel-info" style="margin-top:50px;">
-    <div class="panel-heading"> {{panelHeading}}</div>
+    <div class="panel-heading" [ngClass]="{'heading':true ,'heading-back-color':false}">{{panelHeading | lowercase}}</div>
     <div class="panel-wrapper collapse in">
       <div class="panel-body">
         <div class="row">
@@ -23,7 +23,76 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-12">
+            <ul [ngSwitch]="selectedCountry.Value">
+              <li *ngSwitchCase="'1'">
+                <img src="../assets/india-flag.png" />
+              </li>
+              <li *ngSwitchCase="'2'">
+                <img src="../assets/usa-flag.png" />
+              </li>
+              <li *ngSwitchCase="'3'">
+                <img src="../assets/australia-flag.png" />
+              </li>
+              <li *ngSwitchDefault>
+                <img src="../assets/india-flag.png" />
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- <div class="col-md-6 row">
+  <div class="panel panel-info" style="margin-top:50px;">
+    <div class="panel-heading"> If then else</div>
+    <div class="panel-wrapper collapse in">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="radio" name="rad2" checked (click)="changeValue(true)"> True
+              <input type="radio" name="rad2" (click)="changeValue(false)"> False
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <div *ngIf="canShowTemplatedata; then trueBlock else falseBlock">
+                Hello World! in block {{panelHeading}}
+              </div>
+              <ng-template #trueBlock>
+                <p>Hello World! in true block {{panelHeading}}</p>
+              </ng-template>
+
+              <ng-template #falseBlock>
+                <p>Hello World! in false block</p>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <button type="button" (click)="canShowLifeCycle()">Destroy Life Cycle Component</button>
+
+<app-life-cycle [inputData]="selectedCountry.Value" *ngIf="showLifecycle"></app-life-cycle> -->
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Gender</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of gridData">
+      <td>{{user.name | custompipe:user.gender}}</td>
+      <td>{{user.gender}}</td>
+    </tr>
+  </tbody>
+</table>

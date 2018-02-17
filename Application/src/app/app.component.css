@@ -1,0 +1,11 @@
+li {
+  list-style: none;
+}
+
+.heading {
+  color: red !important;
+}
+
+.heading-back-color{
+  background-color:grey !important;
+}
