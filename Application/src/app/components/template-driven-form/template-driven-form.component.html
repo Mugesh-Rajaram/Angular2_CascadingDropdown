@@ -1,0 +1,71 @@
+<div class="col-md-6">
+  <div class="panel panel-info" style="margin-top:50px;">
+    <div class="panel-heading">Registration Form</div>
+    <div class="panel-wrapper collapse in">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" class="form-control" name="firstName" placeholder="First Name" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input class="form-control" type="text" name="lastName" placeholder="Last Name" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleAddress">Email address</label>
+              <input type="email" class="form-control" id="exampleAddress" placeholder="Email">
+            </div>
+          </div>
+          <div class="col-md-6" style="margin-top:30px;">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Male</label>
+              <input type="radio" name="Gender" value="Male" />
+              <label for="exampleInputEmail1">Female</label>
+              <input type="radio" name="Gender" value="Female" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="address">State</label>
+              <select class="form-control">
+                <option *ngFor="let state of stateList" value={{state.Value}}>{{state.Label}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="address">City</label>
+              <select class="form-control">
+                <option *ngFor="let city of cityList" value={{city.Value}}>{{city.Label}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea type="text" class="form-control" name="addredd"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-primary">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
