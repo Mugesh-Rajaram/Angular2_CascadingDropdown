@@ -3,6 +3,7 @@ import { City } from '../model/city';
 import { Country } from '../model/country';
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators';
+import { State } from '../model/state';
 
 @Injectable()
 export class MasterService {
@@ -22,7 +23,21 @@ export class MasterService {
     }
 
     public getCityList() {
-        return this.http.get(`api/master/cilt`).pipe(map(response => response));
+        return [
+            new City('Namakkal', 1, 1),
+            new City('Chennai', 2, 1),
+            new City('Madurai', 3, 1),
+            new City('Salem', 4, 1),
+            new City('Bengaluru', 5, 2),
+            new City('Mangalore', 6, 2),
+            new City('Hubli', 7, 2),
+            new City('Bijapur', 8, 2),
+            new City('Thiruvanathapuram', 9, 3),
+            new City('Kochi', 10, 3),
+            new City('Kozhikode', 11, 3),
+            new City('Thrissur', 12, 3),
+        ];
+        // return this.http.get(`api/master/cilt`).pipe(map(response => response));
         // return [
         //     new City('Namakkal', 1, 1),
         //     new City('Chennai', 2, 1),
@@ -37,6 +52,14 @@ export class MasterService {
         //     new City('Adelaide', 11, 3),
         //     new City('Perth', 12, 3),
         // ];
+    }
+
+    public getStateList() {
+        return [
+            new State('Tamilnadu', 1),
+            new State('Karnataka', 2),
+            new State('Kerala', 3),
+        ];
     }
 
 }

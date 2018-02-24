@@ -57,8 +57,8 @@ export class AppComponent implements OnInit, OnChanges {
     // }, error => console.log(error));
     this.canShowTemplatedata = true;
     forkJoin(
-      this.masterService.getCountryList().pipe(map(response => response)),
-      this.masterService.getCityList().pipe(map(resp => resp)),
+      // this.masterService.getCountryList().pipe(map(response => response)),
+      // this.masterService.getCityList().pipe(map(resp => resp)),
     ).subscribe(resp => {
       this.countryList = resp[0] as Country[];
       this.cityList = resp[1] as City[];
@@ -73,10 +73,10 @@ export class AppComponent implements OnInit, OnChanges {
 
   private countryChange(countryId: any) {
     this.cityList = [];
-    this.masterService.getCityList().subscribe(response => {
-      const data = response as City[];
-      this.cityList = data.filter(f => f.Id.toString() === countryId);
-    });
+    // this.masterService.getCityList().subscribe(response => {
+    //   const data = response as City[];
+    //   this.cityList = data.filter(f => f.Id.toString() === countryId);
+    // });
   }
 
   private changeValue(valid: boolean) {

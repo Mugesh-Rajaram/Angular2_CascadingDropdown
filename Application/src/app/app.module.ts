@@ -9,19 +9,25 @@ import { LifeCycleComponent } from './components/life-cycle/life-cycle.component
 import { InterseptorService } from './service/interseptor.service';
 import { CustomPipeComponent } from './components/custom-pipe/custom-pipe.component';
 import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
+import { HomeComponent } from './spa/components/home/home.component';
+import { AboutComponent } from './spa/components/about/about.component';
+import { AppRoutes } from './app.routing';
 
 @NgModule({
   declarations: [
     AppComponent,
     LifeCycleComponent,
     CustomPipeComponent,
-    TemplateDrivenFormComponent
+    TemplateDrivenFormComponent,
+    HomeComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutes
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

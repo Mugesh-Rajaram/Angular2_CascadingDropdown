@@ -1,71 +1,109 @@
-<div class="col-md-6">
-  <div class="panel panel-info" style="margin-top:50px;">
-    <div class="panel-heading">Registration Form</div>
-    <div class="panel-wrapper collapse in">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input type="text" class="form-control" name="firstName" placeholder="First Name" />
+<form #registrationForm="ngForm" (ngSubmit)="submitForm()">
+  <div class="col-md-6">
+    <div class="panel panel-info" style="margin-top:50px;">
+      <div class="panel-heading">Registration Form</div>
+      <div class="panel-wrapper collapse in">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstname">First Name *</label>
+                <input type="text" class="form-control" name="firstname" placeholder="First Name" [(ngModel)]="firstName" required #firstname="ngModel"
+                  [ngClass]="{'error':firstname.errors&&(firstname.dirty||firstname.touched||registrationForm.submitted)}"
+                />
+                <div *ngIf="firstname.errors&&(firstname.touched||firstname.dirty||registrationForm.submitted)">
+                  <div *ngIf="firstname.errors.required" class="form-text text-danger">First Name is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="lastname">Last Name *</label>
+                <input class="form-control" type="text" name="lastname" placeholder="Last Name" [(ngModel)]="lastName" required #lastname="ngModel"
+                  [ngClass]="{'error':lastname.errors&&(lastname.dirty||lastname.touched||registrationForm.submitted)}" />
+                <div *ngIf="lastname.errors&&(lastname.touched||lastname.dirty||registrationForm.submitted)">
+                  <div *ngIf="lastname.errors.required" class="form-text text-danger">Last Name is required</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input class="form-control" type="text" name="lastName" placeholder="Last Name" />
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="emailaddress">Email address *</label>
+                <input type="email" class="form-control" name="exampleAddress" placeholder="Email" [(ngModel)]="emailAddress" required #emailaddress="ngModel"
+                  [pattern]="emailPattern" [ngClass]="{'error':emailaddress.errors&&(emailaddress.dirty||emailaddress.touched||registrationForm.submitted)}"
+                />
+                <div *ngIf="emailaddress.errors&&(emailaddress.touched||emailaddress.dirty||registrationForm.submitted)">
+                  <div *ngIf="emailaddress.errors.required" class="form-text text-danger">Email address is required</div>
+                  <div *ngIf="emailaddress.errors.pattern" class="form-text text-danger">Enter valid email address</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="gender">Gender *</label>
+                <br>
+                <label>
+                  <input type="radio" name="gender" value="Male" [(ngModel)]="slectedGender" required #gender="ngModel" />
+                  Male
+                </label>
+                <label style="padding-left:5px;">
+                  <input type="radio" name="gender" value="Female" [(ngModel)]="slectedGender" required #gender="ngModel" />
+                  Female
+                </label>
+                <div *ngIf="gender.errors&&(gender.touched||gender.dirty||registrationForm.submitted)">
+                  <div *ngIf="gender.errors.required" class="form-text text-danger">Gender is required</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="exampleAddress">Email address</label>
-              <input type="email" class="form-control" id="exampleAddress" placeholder="Email">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="state">State *</label>
+                <select class="form-control" name="state" [(ngModel)]="selectedState" (change)="stateChange(selectedState)" required #state="ngModel"
+                  [ngClass]="{'error':state.errors&&(state.dirty||state.touched||registrationForm.submitted)}">
+                  <option value="null" disabled>--select--</option>
+                  <option *ngFor="let state of stateList" value={{state.Value}}>{{state.Label}}</option>
+                </select>
+                <div *ngIf="state.errors&&(state.touched||state.dirty||registrationForm.submitted)">
+                  <div *ngIf="state.errors.required" class="form-text text-danger">State is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="city">City *</label>
+                <select class="form-control" name="city" [(ngModel)]="selectedCity" required #city="ngModel" [ngClass]="{'error':city.errors&&(city.dirty||city.touched||registrationForm.submitted)}">
+                  <option value="null" disabled>--select--</option>
+                  <option *ngFor="let city of cityList" value={{city.Value}}>{{city.Label}}</option>
+                </select>
+                <div *ngIf="city.errors&&(city.touched||city.dirty||registrationForm.submitted)">
+                  <div *ngIf="city.errors.required" class="form-text text-danger">City is required</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-md-6" style="margin-top:30px;">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Male</label>
-              <input type="radio" name="Gender" value="Male" />
-              <label for="exampleInputEmail1">Female</label>
-              <input type="radio" name="Gender" value="Female" />
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="Address">Address *</label>
+                <textarea type="text" class="form-control" name="Address" [(ngModel)]="address" required #Address="ngModel" [ngClass]="{'error':Address.errors&&(Address.dirty||Address.touched||registrationForm.submitted)}"></textarea>
+                <div *ngIf="Address.errors&&(Address.touched||Address.dirty||registrationForm.submitted)">
+                  <div *ngIf="Address.errors.required" class="form-text text-danger">Address is required</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="address">State</label>
-              <select class="form-control">
-                <option *ngFor="let state of stateList" value={{state.Value}}>{{state.Label}}</option>
-              </select>
+          <div class="row">
+            <div class="col-md-6">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-primary" (click)="resetForm()">Reset</button>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="address">City</label>
-              <select class="form-control">
-                <option *ngFor="let city of cityList" value={{city.Value}}>{{city.Label}}</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="address">Address</label>
-              <textarea type="text" class="form-control" name="addredd"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <button type="button" class="btn btn-primary">Submit</button>
-            <button type="button" class="btn btn-primary">Reset</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</form>
