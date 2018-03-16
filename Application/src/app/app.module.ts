@@ -12,6 +12,7 @@ import { TemplateDrivenFormComponent } from './components/template-driven-form/t
 import { HomeComponent } from './spa/components/home/home.component';
 import { AboutComponent } from './spa/components/about/about.component';
 import { AppRoutes } from './app.routing';
+import { BasicMenuComponent } from './layout/basic-menu/basic-menu.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AppRoutes } from './app.routing';
     TemplateDrivenFormComponent,
     HomeComponent,
     AboutComponent,
+    BasicMenuComponent,
   ],
   imports: [
     BrowserModule,
